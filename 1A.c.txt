@@ -1,0 +1,24 @@
+#include "igt.h"
+#include "igt_collection.h"
+#include "i915/gem_create.h"
+#include <xf86drm.h>
+#include <sys/ioctl.h>
+
+
+int fd=drm_open_driver(DRIVER_INTEL);
+
+
+
+struct drm_gem_create create;
+struct drm_gem_close close;
+create.size=4096;
+ret = ioctl (fd, DRM_IOCTL_GEM_CREATE, &create);
+		if (ret == 0)
+			return create.handle;
+			
+
+
+
+close.handle = handle;
+		ret = ioctl (fd, DRM_IOCTL_GEM_CLOSE, &close);
+close(fd);
